@@ -1,0 +1,10 @@
+Crear venv: py -m venv venv (nombre carpeta)
+Acitvar: . venv/Scripts/activate
+Iniciar app: py manage.py startapp clase (nombre)
+Crear archivo c/codigo para DB: py manage.py makemigrations(se debe hacer cada vez que se modifique algo)
+DB se configura con el codigo: py manage.py migrate
+py manage.py shell
+from clase.models nombreclase
+Agregar id en DB: from clase.models import nombreclase
+        nueva_data = Clase(datos)
+        nueva_data.save()
