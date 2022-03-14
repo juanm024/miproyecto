@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+{% extends 'index.html' %}
+
+{% block pruebaTemplate %}
     Mi plantilla la mas vacia
 
     {% if nombre_largo < 5 %}
@@ -23,5 +26,6 @@
     {% for valor in lista %}
         <p style="color: red;">{{valor}}</p>
     {% endfor %}
+{% endblock pruebaTemplate %}
 </body>
 </html>

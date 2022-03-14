@@ -1,0 +1,16 @@
+{% extends 'indice/index.html' %}
+
+{% block header_index %}{% endblock header_index %}
+{% block pruebatemplate %}
+
+    <form action ="" method="post">
+        {% csrf_token %}
+
+        <table>
+        {{formulario.as_table}}
+        </table>
+
+        <input type= "submit" placeholder = "Enviar">
+    </form>
+
+{% endblock pruebatemplate %}

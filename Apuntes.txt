@@ -1,10 +1,54 @@
-Crear venv: py -m venv venv (nombre carpeta)
+Crear Entorno virtual: py -m venv venv (nombre carpeta)
+Iniciar git: git init
 Acitvar: . venv/Scripts/activate
-Iniciar app: py manage.py startapp clase (nombre)
+Instalar Django: pip install django (Opcional: actualizar pip: py -m pip install --upgrade pip)
+Iniciar proyecto: django-admin startporject entrega_int (nombre carpeta) y mover carpeta a nivel principal
+
+Linkear a github: git status (revisa el seguimiento de archivos)
+git add . (pasa de cambios a stage)
+git commit -m'inicio de proyecto' (msj informativo)
+git branch -m main (para que github tome main en lugar de master)
+En repositorio github: push an existing repository from the command line (conecta como drive)
+Confirmar conexion con git remote
+Para primer push: git push -u origin main (indica que sube codigo a origin/main) / despues solo git push
+Para subir cambios en github: git add . / git commit -m'msj' / git push / git status para confirmar si esta OK
+
+Crear archivo requirements: pip freeze > requirements (con doble >> agrega info al archivo)
+
+Agregar aplicacion: verificar con ls que estemos en la carpeta del manage.py
+Luego: py manage.py startapp index (nombre)
+Agregar en settings.py / INSTALLED_APPS el nombre de la app creada
+Crear urls.py para cada app creada y agregar lista de direcciones (url (vacio es inicial), archivo y nombre):
+from django.urls import path
+urlpatterns = [
+    path("", index, name= "index")
+]
+En urls.py de carpeta principal agregar: "from django.urls import path, include" y path para pagina inicio
+Luego en urls.py de la app agregar from .views import index (nombre)
+En views.py de la app agregar vista:
+def index(request):
+    return HttpResponse("<H2>Bienvenidos!</H2>")
+
+Cargar servidor: py manage.py migrate para crear db y luego py manage.py
+
+
+Plantillas: agregar nombre en import y path en archivo urls.py de la app y en views.py "from django.template import loader" y la vista:
+def plantilla(request):
+    template = loader.get_template("plantilla.html")
+    return HttpResponse("")
+En la app crear carpeta plantillas, dentro html con nombre de la plantilla y en el archivo "html:5" y en body agregar contenido
+Agregar en settings.py principal el path del template (templates/dir) usando r""
+En archivo urls.py agregar la carpeta de plantillas al import
+
 Crear archivo c/codigo para DB: py manage.py makemigrations(se debe hacer cada vez que se modifique algo)
-DB se configura con el codigo: py manage.py migrate
+DB se configura con el codigo: py manage.py migrate (implementa modificaciones)
 py manage.py shell
 from clase.models nombreclase
 Agregar id en DB: from clase.models import nombreclase
         nueva_data = Clase(datos)
         nueva_data.save()
+
+
+- Formularios:
+GET y POST (por defecto django toma get salvo se especifique post)
+Crear path en url y vista en views
